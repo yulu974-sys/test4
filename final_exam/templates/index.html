@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}首頁 - 客戶管理系統{% endblock %}
+
+{% block content %}
+<article>
+    <h1>客戶管理系統</h1>
+    <p>本系統使用 Flask、SQLite、Flask-WTF 與 Pico CSS v2 建置，提供登入驗證與完整客戶 CRUD 功能。</p>
+
+    {% if session.get('username') %}
+        <p>目前登入帳號：{{ session.get('username') }}</p>
+        <a href="{{ url_for('customer_list') }}" role="button">客戶列表</a>
+        <a href="{{ url_for('logout') }}" role="button" class="secondary">登出</a>
+    {% else %}
+        <a href="{{ url_for('login') }}" role="button">登入</a>
+    {% endif %}
+</article>
+{% endblock %}

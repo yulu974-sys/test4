@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - 客戶管理系統{% endblock %}
+
+{% block content %}
+<article>
+    <h1>{{ title }}</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+
+        <label for="cid">
+            {{ form.cid.label.text }}
+            {% if is_edit %}
+                {{ form.cid(id="cid", readonly=true) }}
+            {% else %}
+                {{ form.cid(id="cid") }}
+            {% endif %}
+        </label>
+        {% for error in form.cid.errors %}
+            <small>{{ error }}</small>
+        {% endfor %}
+
+        <label for="cname">
+            {{ form.cname.label.text }}
+            {{ form.cname(id="cname") }}
+        </label>
+        {% for error in form.cname.errors %}
+            <small>{{ error }}</small>
+        {% endfor %}
+
+        <label for="email">
+            {{ form.email.label.text }}
+            {{ form.email(id="email") }}
+        </label>
+        {% for error in form.email.errors %}
+            <small>{{ error }}</small>
+        {% endfor %}
+
+        <label for="phone">
+            {{ form.phone.label.text }}
+            {{ form.phone(id="phone") }}
+        </label>
+        {% for error in form.phone.errors %}
+            <small>{{ error }}</small>
+        {% endfor %}
+
+        <label for="address">
+            {{ form.address.label.text }}
+            {{ form.address(id="address") }}
+        </label>
+        {% for error in form.address.errors %}
+            <small>{{ error }}</small>
+        {% endfor %}
+
+        {{ form.submit() }}
+        <a href="{{ url_for('customer_list') }}" role="button" class="secondary">返回列表</a>
+    </form>
+</article>
+{% endblock %}

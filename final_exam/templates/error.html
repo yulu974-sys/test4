@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}錯誤 - 客戶管理系統{% endblock %}
+
+{% block content %}
+<article>
+    <h1>錯誤</h1>
+    <p>{{ message }}</p>
+    <a href="{{ url_for('customer_list') }}" role="button">返回客戶列表</a>
+</article>
+{% endblock %}

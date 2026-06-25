@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}登入 - 客戶管理系統{% endblock %}
+
+{% block content %}
+<article>
+    <h1>登入</h1>
+    <form method="post" action="{{ url_for('login') }}">
+        {{ form.hidden_tag() }}
+
+        <label for="username">
+            {{ form.username.label.text }}
+            {{ form.username(id="username") }}
+        </label>
+        {% for error in form.username.errors %}
+            <small>{{ error }}</small>
+        {% endfor %}
+
+        <label for="password">
+            {{ form.password.label.text }}
+            {{ form.password(id="password") }}
+        </label>
+        {% for error in form.password.errors %}
+            <small>{{ error }}</small>
+        {% endfor %}
+
+        {{ form.submit() }}
+    </form>
+</article>
+{% endblock %}
